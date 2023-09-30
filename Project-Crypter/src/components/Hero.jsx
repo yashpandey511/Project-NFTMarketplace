@@ -23,7 +23,7 @@ const Hero = () => {
           />
           <div>
             <p className="text-white font-semibold">
-              {connectedAccount ? truncate(connectedAccount, 4, 4, 11) : 'Connect Your Wallet'}
+              {connectedAccount ? truncate(connectedAccount) : 'Connect Your Wallet'}
             </p>
           </div>
         </div>
