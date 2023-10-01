@@ -12,7 +12,7 @@ const Hero = () => {
       <div className="shadow-xl shadow-black md:w-3/5 w-full mt-10 md:mt-0 rounded-md overflow-hidden bg-gray-800 flex flex-col justify-center items-center mx-auto">
         <img
             src="https://source.unsplash.com/1434x956"
-            alt="NFT Art"
+            alt="Logo"
             className="h-60 w-full object-cover"
         />
         <div className="flex justify-start items-center p-3">
@@ -35,8 +35,7 @@ const Hero = () => {
           <div>
             <h1 className="text-white text-5xl font-bold">
               Buy and Sell <br /> Digital Arts, <br />
-              <span className="text-gradient">NFTs</span> Collections
-            </h1>
+              <span className="text-gradient">NFTs</span> Collections</h1>
           </div>
   
           <div className="flex flex-row mt-5">
