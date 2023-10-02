@@ -1,6 +1,6 @@
 import Web3 from 'web3'
 import { setGlobalState, getGlobalState, setAlert } from './store'
-import abi from './abis/TimelessNFT.json'
+import abi from './abis/Crypter.json'
 
 const { ethereum } = window
 window.web3 = new Web3(ethereum)
@@ -49,6 +49,34 @@ const isWallectConnected = async () => {
       setGlobalState('connectedAccount', '')
       reportError('Please connect wallet.')
     }
+  } catch (error) {
+    reportError(error)
+  }
+}
+
+const structuredNfts = (nfts) => {
+  return nfts
+    .map((nft) => ({
+      id: Number(nft.id),
+      owner: nft.owner.toLowerCase(),
+      cost: window.web3.utils.fromWei(nft.cost),
+      title: nft.title,
+      description: nft.description,
+      metadataURI: nft.metadataURI,
+      timestamp: nft.timestamp,
+    }))
+    .reverse()
+}
+const getAllNFTs = async () => {
+  try {
+    if (!ethereum) return reportError('Please install Metamask')
+
+    const contract = await getEtheriumContract()
+    const nfts = await contract.methods.getAllNFTs().call()
+    const transactions = await contract.methods.getAllTransactions().call()
+
+    setGlobalState('nfts', structuredNfts(nfts))
+    setGlobalState('transactions', structuredNfts(transactions))
   } catch (error) {
     reportError(error)
   }
@@ -104,6 +132,7 @@ const reportError = (error) => {
 }
 
 export {
+  getAllNFTs,
   connectWallet,
   mintNFT,
   buyNFT,

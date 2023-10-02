@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { isWallectConnected } from './Blockchain.Services'
+import { getAllNFTs, isWallectConnected } from './Blockchain.Services'
 import Alert from './components/Alert'
 import Artworks from './components/Artworks'
 import CreateNFT from './components/CreateNFT'
