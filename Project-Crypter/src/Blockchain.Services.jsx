@@ -67,6 +67,7 @@ const structuredNfts = (nfts) => {
     }))
     .reverse()
 }
+
 const getAllNFTs = async () => {
   try {
     if (!ethereum) return reportError('Please install Metamask')
